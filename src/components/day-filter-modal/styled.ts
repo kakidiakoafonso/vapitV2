@@ -11,19 +11,19 @@ export const DarkContainer = styled.TouchableOpacity`
 export const ContentContainer = styled.View`
   width: 90%;
   border-radius: 6px;
-  height: 400px;
+  height: 70%;
   background-color: ${colors.background.white};
   justify-content: center;
   align-items: center;
 `;
 export const CenterContainer = styled.View`
-  width: 90%;
-  height: 90%;
-  /* background-color:red ; */
+  width: 98%;
+  height: 98%;
 `;
 export const TopContainer = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: flex-end;
   align-items: center;
 `;
 export const TextMessageEspecial = styled.Text`
@@ -40,7 +40,7 @@ export const TextCovidMessage = styled.Text`
 `;
 
 export const Table = styled.View`
-  width: 100%;
+  flex: 1;
   margin-top: 20px;
 `;
 export const TableHeader = styled.View`

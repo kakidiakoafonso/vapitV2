@@ -10,18 +10,19 @@ type ICitie = {
 
 type ILine = {
   id: Number;
-  name: "Luanda";
-  code: "LDA12";
+  name: String;
+  code: String;
   company: String | null;
   allow_ads: Number;
   status: Number;
   city_id: Number;
-  bus_color_id: Number;
+  bus_color_id: String;
   bus_category_id: Number;
   created_at: String;
   updated_at: String;
   color_of_bus: String;
   category_of_bus: String;
+  adverts: IAdverts[];
 };
 
 type IStop = {
@@ -54,7 +55,7 @@ type ISchedule = {
 
 type IWeather = {
   weather: IweatherDetails;
-  temperature: number;
+  temperature: Number;
   name: string;
 };
 
@@ -63,4 +64,18 @@ type IweatherDetails = {
   main: string;
   description: string;
   icon: string;
+};
+
+type IAdverts = {
+  id: Number;
+  description: String;
+  slug: String;
+  title: String;
+  width: Number;
+  height: Number;
+  end_date: String;
+  link: String;
+  line_id: Number;
+  url: String;
+  dimensions: String;
 };

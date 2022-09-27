@@ -6,10 +6,16 @@ import { AntDesign } from "@expo/vector-icons";
 import SearchIcon from "../../assets/icons/search-r-2.svg";
 import { Loading } from "../../components/loader";
 import CityCard from "../../components/city-card";
+import { useDispatch } from "react-redux";
+import { dispatchWeather } from "../../redux/Weather/weather.dispacth";
 
 export function City() {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const { data, isLoading } = useGetCities();
+  React.useEffect(() => {
+    dispatch(dispatchWeather());
+  }, []);
   return (
     <Styled.Container>
       <Styled.TopContainer>

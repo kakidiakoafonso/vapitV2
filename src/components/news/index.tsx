@@ -19,7 +19,6 @@ export function News() {
       setloading(false);
     } else {
       setloading(false);
-      console.log("Erro no fetch de noticias");
     }
   }
   useEffect(() => {
@@ -29,7 +28,7 @@ export function News() {
   const handleLinking = (linkToNavigate: string) =>
     Linking.openURL(linkToNavigate);
 
-  if (!isloading)
+  if (isloading)
     return (
       <Styled.Container>
         <Skeleton width={"100%"} height={240} colorMode="light" />

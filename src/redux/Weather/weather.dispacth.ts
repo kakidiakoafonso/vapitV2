@@ -1,0 +1,35 @@
+import axios from "axios";
+import * as Location from "expo-location";
+import {
+  getWeatherSucess,
+  getWeather,
+  getWeatherError,
+} from "./weather.action";
+
+const apiKey = "053859db322b90449538eab037ea3b1d";
+export function dispatchWeather() {
+  return async function (dispatch: any) {
+    dispatch(getWeather());
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      dispatch(getWeatherError("Permission to access location was denied"));
+      return;
+    }
+    let location = await Location.getCurrentPositionAsync({});
+    const lat = location.coords.latitude;
+    const lon = location.coords.longitude;
+
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=pt&appid=${apiKey}`
+      )
+      .then((response) => {
+        const weather = response.data.weather[0];
+        const temperature = response.data.main.temp;
+        const name = response.data.name;
+        const FinalWeather: IWeather = { temperature, weather, name };
+        dispatch(getWeatherSucess(FinalWeather));
+      })
+      .catch((error) => dispatch(getWeatherError(error)));
+  };
+}

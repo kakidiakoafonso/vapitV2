@@ -1,10 +1,17 @@
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setBannerViewed } from "../../redux/config/action";
+import { reducerState } from "../../redux/rootReducer";
 import * as S from "./styled";
 
 const uri =
   "https://i.pinimg.com/564x/14/e8/56/14e856dd93affc5c45d5ba26482761c5.jpg";
 export function FullBannner() {
+  const dispatch = useDispatch();
+  const isAllreadyShow = useSelector<reducerState, boolean>(
+    (state) => state.config.bannerAlreadyViewed
+  );
   const [showCloseIcon, setshowCloseIcon] = React.useState<boolean>(false);
   const [showModal, setshowModal] = React.useState<boolean>(true);
   const [counter, setCounter] = React.useState<number>(4);
@@ -17,6 +24,7 @@ export function FullBannner() {
 
     if (counter < 1) {
       clearTimeout(bannerTimeout);
+      dispatch(setBannerViewed());
       // setshowCloseIcon(true);§
       closeModal();
     }
@@ -24,6 +32,7 @@ export function FullBannner() {
       clearTimeout(bannerTimeout);
     };
   }, [counter]);
+  if (isAllreadyShow) return null;
   return (
     <S.Modal visible={showModal} transparent>
       <S.ShadowContainer>

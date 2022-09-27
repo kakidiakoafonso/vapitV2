@@ -10,6 +10,9 @@ import { Loading } from "../../components/loader";
 import { useGetLines } from "../../hooks";
 import { LineCard } from "../../components/line-card";
 import { Weather } from "../../components/weather";
+import { useSelector } from "react-redux";
+import { reducerState } from "../../redux/rootReducer";
+import { Skeleton } from "moti/skeleton";
 
 // import { dispatchTerminais } from "../../redux/Terminal/terminal.dispatch";
 // import Linha from "../../components/Linha/Linha";
@@ -17,20 +20,29 @@ import { Weather } from "../../components/weather";
 // import Admob from "../../components/Admob/Admob";
 
 export function Home() {
+  const weather = useSelector<reducerState, IWeather>(
+    (state) => state.weather.weather
+  );
+  const isWeatherLoading = useSelector<reducerState, boolean>(
+    (state) => state.weather.loading
+  );
   const navigation = useNavigation();
-  const [city, setcity] = React.useState("");
   const { params } = useRoute();
-  const { url }: { url: Array<string> } = params;
-  const { data: lines, isLoading } = useGetLines(21);
+  const { url, cityId }: { url: Array<string>; cityId: Number } = params;
+  const { data: lines, isLoading } = useGetLines(cityId);
   return (
     <Styled.Container>
       <Styled.Header>
-        <Styled.Menu>
+        {/* <Styled.Menu>
           <Entypo name="menu" size={44} color="black" />
-        </Styled.Menu>
+        </Styled.Menu> */}
         <Styled.LefContainer>
           <LocationIcon width={25} height={25} />
-          <Styled.TextLocationname>{city || ""}</Styled.TextLocationname>
+          {isWeatherLoading ? (
+            <Skeleton height={20} width={100} colorMode="light" />
+          ) : (
+            <Styled.TextLocationname>{weather.name}</Styled.TextLocationname>
+          )}
         </Styled.LefContainer>
       </Styled.Header>
 
@@ -38,7 +50,7 @@ export function Home() {
         {url.length > 0 && <Banner data={url} />}
 
         <Styled.ScrollViewContainer>
-          <Weather setLocation={(e) => setcity(e)} />
+          <Weather />
         </Styled.ScrollViewContainer>
 
         {/* <Admob/> */}

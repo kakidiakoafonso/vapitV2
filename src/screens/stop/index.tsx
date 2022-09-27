@@ -5,6 +5,7 @@ import * as Styled from "./styled";
 import { useGetStops } from "../../hooks";
 import { useRoute } from "@react-navigation/native";
 import { StopCard } from "../../components/stop-card";
+import { Adverts } from "../../components/adverts";
 
 // import CustomAds from "../../components/InfoImage/BusImage";
 // import { IAds, Directions } from "../../redux/Terminal/terminal.types";
@@ -12,7 +13,8 @@ import { StopCard } from "../../components/stop-card";
 
 export function Stop() {
   const { params } = useRoute();
-  const { data, isLoading } = useGetStops(2);
+  const { adverts, lineId }: { adverts: IAdverts[]; lineId: Number } = params;
+  const { data, isLoading } = useGetStops(lineId);
 
   return (
     <Styled.Container>
@@ -35,6 +37,7 @@ export function Stop() {
             </>
           ) : (
             <Styled.ParadasList
+              showsVerticalScrollIndicator={false}
               data={data}
               keyExtractor={(item: IStop) => String(item.id)}
               renderItem={({ item }: { item: IStop }) => (
@@ -45,7 +48,7 @@ export function Stop() {
         </Styled.ParadasListContainer>
       </Styled.Flex>
 
-      {/* {data?.adverts && <CustomAds ads={data.adverts} />} */}
+      {/* <Adverts adverts={adverts} /> */}
     </Styled.Container>
   );
 }

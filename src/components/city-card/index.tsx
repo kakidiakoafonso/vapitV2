@@ -8,16 +8,11 @@ import { useNavigation } from "@react-navigation/native";
 type Props = {
   city: ICitie;
 };
-const url: String[] = [
-  "https://explozaogamer.com.br/wp-content/uploads/2022/02/Sem-Titulo-1-2.png",
-  "https://explozaogamer.com.br/wp-content/uploads/2022/02/f255b7_cb3adb1b0dba4227a4cb9b8429e1cf0f_mv2-696x331.png",
-  "https://explozaogamer.com.br/wp-content/uploads/2022/02/f255b7_fbbd953ec6a748e5a54435733efae013_mv2-696x392.jpeg",
-];
 export default function CityCard({ city }: Props) {
   const { navigate } = useNavigation();
-  // const { url } = city;
+  const { url } = city;
   function handleNavigate() {
-    navigate("home", { url });
+    navigate("home", { url, cityId: city.id });
   }
   if (!city.status) return null;
   return (

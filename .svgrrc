@@ -1,0 +1,7 @@
+{
+  "replaceAttrValues": {
+    "#000": "{props.aaa}",
+    "#00f": "{props.bbb}",
+    "#ff0": "{props.ccc}"
+  }
+}

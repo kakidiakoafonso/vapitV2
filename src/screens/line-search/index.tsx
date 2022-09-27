@@ -4,23 +4,12 @@ import { Search } from "../../components/search";
 import { useGetLines } from "../../hooks";
 import { Loading } from "../../components/loader";
 import { LineCard } from "../../components/line-card";
-
-// import { ListRenderItem } from "react-native";
-// import { FontAwesome, AntDesign, Ionicons } from "@expo/vector-icons";
-// import colors from "../../config/style/colors";
-// import ShimmerCidades from "../../components/ShimmerCidade/Cidades";
-// import CidadesComponent from "../../components/Cidades/Index";
-// import { useSelector } from "react-redux";
-// import { useDispatch } from "react-redux";
-// import { reducerState } from "../../redux/rootReducer";
-// import { fetchCidade, ICidade } from "../../redux/Cidades/cidade.action";
-// import Linha from "../../components/Linha/Linha";
-// import { useNavigation, useRoute } from "@react-navigation/native";
-// import { setOrigem } from "../../redux/Rota/rota.action";
-// import { dispatchTerminais } from "../../redux/Terminal/terminal.dispatch";
+import { useRoute } from "@react-navigation/native";
 
 export function SearchLine() {
-  // const { params } = useRoute();
+  const { params } = useRoute();
+  console.log(params);
+
   const { data: lines, isLoading } = useGetLines(21);
   const [linhasAtuais, setlinhasAtuais] = useState<ILine[]>(lines || []);
   const handleSearch = (text: string) => {

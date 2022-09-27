@@ -22,7 +22,7 @@ export function LineCard({ line }: Props) {
   function handleLinhaClick() {
     // if (thereIsNoBus) setshowModal(true);
     // else navigation.navigate("Paradas", { bus_stops });
-    navigation.navigate("stop", { lineId: line.id });
+    navigation.navigate("stop", { lineId: line.id, adverts: line.adverts });
   }
   return (
     <Styled.Container

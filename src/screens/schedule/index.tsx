@@ -19,6 +19,7 @@ import { DayFilterModal } from "../../components/day-filter-modal";
 // import Details from "./Components/Detais/Details";
 // import CustomAds from "../../components/InfoImage/BusImage";
 import { FullBannner } from "../../components/full-banner";
+import { FlatList } from "react-native";
 
 export function Schedule() {
   const { params } = useRoute();
@@ -27,6 +28,8 @@ export function Schedule() {
   const [modalOpen, setmodalOpen] = useState<boolean>(false);
   const [newSchedules, setnewSchedules] = useState<ISchedule[]>(schedules);
   const localHour = new Date().getHours();
+  const uniqueWays = [...new Set(schedules.map((item) => item.way))];
+  console.log(uniqueWays);
 
   function handleMais(selectedDay: IDay) {
     const filteredSchedule = schedules.filter(
@@ -58,17 +61,21 @@ export function Schedule() {
           <Styled.FilterText>Limpar o filtro</Styled.FilterText>
         </Styled.Button>
       </Styled.FilterContainer>
-      <Styled.ScrollView showsVerticalScrollIndicator={false}>
-        {newSchedules.map((schedule) => (
-          <ScheduleCard schedule={schedule} />
-        ))}
-      </Styled.ScrollView>
+      <FlatList
+        data={newSchedules}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }: { item: ISchedule }) => (
+          <ScheduleCard schedule={item} />
+        )}
+      />
       {/* {ads && <CustomAds ads={ads}/>} */}
 
       <DayFilterModal
         modalStatus={modalOpen}
         closeModal={() => setmodalOpen(false)}
         callback={handleMais}
+        way={uniqueWays}
       />
       <FullBannner />
     </Styled.Container>

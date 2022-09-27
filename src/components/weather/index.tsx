@@ -2,13 +2,16 @@ import * as Styled from "./styled";
 import React from "react";
 import { useGetWeather } from "../../hooks";
 import { Skeleton } from "moti/skeleton";
+import { useSelector } from "react-redux";
+import { reducerState } from "../../redux/rootReducer";
 
-type Props = {
-  setLocation: (name: string) => void;
-};
-export function Weather({ setLocation }: Props) {
-  const { data: weather, isLoading } = useGetWeather();
-  if (weather) setLocation(weather.name);
+export function Weather() {
+  const weather = useSelector<reducerState, IWeather>(
+    (state) => state.weather.weather
+  );
+  const isLoading = useSelector<reducerState, boolean>(
+    (state) => state.weather.loading
+  );
   return (
     <>
       {isLoading ? (
