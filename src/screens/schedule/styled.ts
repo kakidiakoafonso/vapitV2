@@ -61,12 +61,39 @@ export const FilterContainer = styled.View`
   margin-bottom: 20px;
   justify-content: space-between;
 `;
+export const FilterButtons = styled.View`
+  flex-direction: row;
+  gap: 10px;
+`;
 
 export const Button = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+`;
+export const ButtonClear = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 `;
 export const TextVerMais = styled.Text`
   margin-right: 10px;
   font-size: 17px;
+`;
+export const EmptyContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const EmptyAnimation = styled.View`
+  margin-top: 10%;
+  margin-bottom: 10%;
+`;
+
+export const EmptyText = styled.Text`
+  margin-right: 10px;
+  font-size: 17px;
+  color: ${colors.background.green};
+  font-weight: bold;
+  font-size: 18px;
 `;

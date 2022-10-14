@@ -7,11 +7,13 @@ export const ShadowContainer = styled.View`
   align-items: center;
 `;
 
-export const BannerContainer = styled.View`
+export const BannerContainer = styled.TouchableOpacity`
   width: 85%;
   height: 70%;
   background-color: #fff;
   border-radius: 4px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const CloseIcon = styled.TouchableOpacity`
@@ -34,7 +36,10 @@ export const CounterMessageContainer = styled.View`
   padding-right: 10px;
 `;
 
-export const TextCounters = styled.Text``;
+export const TextCounters = styled.Text`
+  color: #fff;
+`;
 export const Image = styled.Image`
-  flex: 1;
+  width: 100%;
+  height: 100%;
 `;

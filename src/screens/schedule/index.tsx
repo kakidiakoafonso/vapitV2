@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FontAwesome5, MaterialIcons, AntDesign } from "@expo/vector-icons";
-import BusIcon from "../../assets/icons/bus.svg";
+import { MaterialIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
 import colors from "../../config/style/colors";
 import * as Styled from "./styled";
@@ -8,74 +7,114 @@ import * as Styled from "./styled";
 import { Header } from "../../components/header";
 import { ScheduleCard } from "../../components/schedule-card";
 import { DayFilterModal } from "../../components/day-filter-modal";
-// import Parada from "../../components/Parada/Parada";
-// import TimeLine from "../../components/Time/TimeLine";
-// import BusImage from "../../components/InfoImage/BusImage";
-// import ScrollGrade from "../../components/ScrollGrade/ScrollGrade";
-// import CompleteGrade from "../../components/CompleteGrade/CompleteGrade";
-// import ModalToggle from "../../components/Modal/ModalToggle";
-// import TerminalComponent from "../../components/TerminalComponent/TerminalComponent";
-// import BusDescription from "../../components/BusDescription/BusDescription";
-// import Details from "./Components/Detais/Details";
-// import CustomAds from "../../components/InfoImage/BusImage";
+import LottieView from "lottie-react-native";
 import { FullBannner } from "../../components/full-banner";
 import { FlatList } from "react-native";
+import { getLocalTime } from "../../util";
+import { WayFilterModal } from "../../components/way-filter-modal";
+import { ScheduleDetail } from "../../components/schedule-detail";
+import { EmptyAnimation } from "../../components/empty";
 
 export function Schedule() {
   const { params } = useRoute();
   const { schedules }: { schedules: ISchedule[] } = params;
+  const time = getLocalTime();
+  const finalSchedule = schedules.filter((item) => item.time > time);
+  const [daymodalOpen, setdaymodalOpen] = useState<boolean>(false);
+  const [waymodalOpen, setwaymodalOpen] = useState<boolean>(false);
+  const [showScheduleDetail, setShowScheduleDetail] = useState<boolean>(false);
+  const [day, setday] = useState<String>("");
+  const [way, setway] = useState<String>("");
+  const [newSchedules, setnewSchedules] = useState<ISchedule[]>(finalSchedule);
+  const [selectedSchedules, setselected] = useState<ISchedule>({} as ISchedule);
+  const uniqueWays = [...new Set(finalSchedule.map((item) => item.way))];
 
-  const [modalOpen, setmodalOpen] = useState<boolean>(false);
-  const [newSchedules, setnewSchedules] = useState<ISchedule[]>(schedules);
-  const localHour = new Date().getHours();
-  const uniqueWays = [...new Set(schedules.map((item) => item.way))];
-  console.log(uniqueWays);
-
-  function handleMais(selectedDay: IDay) {
-    const filteredSchedule = schedules.filter(
-      (item) => item.day === selectedDay
-    );
-    setnewSchedules(filteredSchedule);
-    setmodalOpen(false);
+  function filter() {
+    if (day != "") {
+      const filteredSchedule = finalSchedule.filter((item) => item.day === day);
+      setnewSchedules(filteredSchedule);
+    }
+    if (way != "") {
+      const filteredSchedule = finalSchedule.filter((item) => item.way === way);
+      setnewSchedules(filteredSchedule);
+    }
+    if (day != "" && way != "") {
+      const filteredSchedule = finalSchedule.filter(
+        (item) => item.way === way && item.day === day
+      );
+      setnewSchedules(filteredSchedule);
+    }
+    setdaymodalOpen(false);
+    setwaymodalOpen(false);
   }
+
   function cleanFilter() {
-    setnewSchedules(schedules);
+    setday("");
+    setway("");
+    setnewSchedules(finalSchedule);
   }
-  function setFirstItinerarie() {
-    const day = new Date().getDay();
-  }
+  const animation = React.useRef<LottieView>(null);
+  React.useEffect(() => filter(), [day, way]);
   return (
     <Styled.Container>
       <Header title={"Horários"} />
       <Styled.FilterContainer>
-        <Styled.Button onPress={() => setmodalOpen(true)}>
-          <AntDesign name="filter" size={24} color={colors.background.green} />
-          <Styled.FilterText>Filtrar por dia</Styled.FilterText>
-        </Styled.Button>
-        <Styled.Button onPress={cleanFilter}>
+        <Styled.FilterButtons>
+          <Styled.Button onPress={() => setdaymodalOpen(true)}>
+            <AntDesign
+              name="calendar"
+              size={24}
+              color={colors.background.green}
+            />
+          </Styled.Button>
+          <Styled.Button onPress={() => setwaymodalOpen(true)}>
+            <FontAwesome name="bus" size={24} color={colors.background.green} />
+          </Styled.Button>
+        </Styled.FilterButtons>
+        <Styled.ButtonClear onPress={cleanFilter}>
           <MaterialIcons
             name="cleaning-services"
             size={24}
             color={colors.background.green}
           />
           <Styled.FilterText>Limpar o filtro</Styled.FilterText>
-        </Styled.Button>
+        </Styled.ButtonClear>
       </Styled.FilterContainer>
-      <FlatList
-        data={newSchedules}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }: { item: ISchedule }) => (
-          <ScheduleCard schedule={item} />
-        )}
-      />
-      {/* {ads && <CustomAds ads={ads}/>} */}
+
+      {newSchedules.length === 0 ? (
+        <EmptyAnimation
+          message={
+            day || way
+              ? "Vazio para esse filtro"
+              : "Não existe etineraraios para essa via"
+          }
+        />
+      ) : (
+        <FlatList
+          data={newSchedules}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }: { item: ISchedule }) => (
+            <ScheduleCard schedule={item} />
+          )}
+        />
+      )}
 
       <DayFilterModal
-        modalStatus={modalOpen}
-        closeModal={() => setmodalOpen(false)}
-        callback={handleMais}
+        modalStatus={daymodalOpen}
+        closeModal={() => setdaymodalOpen(false)}
+        callback={(selectedDay) => setday(selectedDay)}
+      />
+      <WayFilterModal
+        modalStatus={waymodalOpen}
+        closeModal={() => setwaymodalOpen(false)}
+        callback={(selectedWay) => setway(selectedWay)}
         way={uniqueWays}
+      />
+      <ScheduleDetail
+        modalStatus={showScheduleDetail}
+        closeModal={() => setShowScheduleDetail(false)}
+        schedule={selectedSchedules}
       />
       <FullBannner />
     </Styled.Container>

@@ -47,8 +47,6 @@ export function Adverts({ adverts }: Props) {
           <Styled.ImageButton
             onPress={() => handleLinking(String(item.link))}
             activeOpacity={1}
-            width={item.width}
-            height={item.height}
           >
             <Styled.Image
               source={{ uri: item.url }}

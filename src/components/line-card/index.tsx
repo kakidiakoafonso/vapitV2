@@ -5,12 +5,15 @@ import { AntDesign } from "@expo/vector-icons";
 import BusIcon from "../../assets/icons/bus connection.svg";
 import { useNavigation } from "@react-navigation/native";
 import { Alert } from "../alert";
+import { useDispatch } from "react-redux";
+import { setAdverts } from "../../redux/adverts";
 // import Error from "../../components/Error/Error";
 
 type Props = {
   line: ILine;
 };
 export function LineCard({ line }: Props) {
+  const dispacth = useDispatch();
   let textSize = 14;
   if (line.name.length > 19) textSize = 14;
   if (line.name.length > 29) textSize = 12;
@@ -22,7 +25,8 @@ export function LineCard({ line }: Props) {
   function handleLinhaClick() {
     // if (thereIsNoBus) setshowModal(true);
     // else navigation.navigate("Paradas", { bus_stops });
-    navigation.navigate("stop", { lineId: line.id, adverts: line.adverts });
+    navigation.navigate("stop", { lineId: line.id });
+    dispacth(setAdverts(line.adverts));
   }
   return (
     <Styled.Container

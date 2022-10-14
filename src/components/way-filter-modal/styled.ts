@@ -5,13 +5,13 @@ export const Container = styled.Modal``;
 export const DarkContainer = styled.TouchableOpacity`
   flex: 1;
   background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
 `;
 export const ContentContainer = styled.View`
-  width: 90%;
+  width: 100%;
   border-radius: 6px;
-  height: 200px;
+  height: 50%;
   background-color: ${colors.background.white};
   justify-content: center;
   align-items: center;
@@ -22,16 +22,22 @@ export const CenterContainer = styled.View`
 `;
 export const TopContainer = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: flex-end;
   align-items: center;
-  margin: 10px;
 `;
-export const Text = styled.Text`
-  font-size: 15px;
-  color: ${colors.background.green};
-  font-weight: bold;
+export const TextMessageEspecial = styled.Text`
+  font-size: 12px;
+  width: 200px;
 `;
 export const IconClose = styled.TouchableOpacity``;
+
+export const TextCovidMessage = styled.Text`
+  font-size: 13px;
+  width: 240px;
+  font-weight: bold;
+  margin-top: 10px;
+`;
 
 export const Table = styled.View`
   flex: 1;
@@ -48,11 +54,15 @@ export const TableHeader = styled.View`
 export const HeaderRow = styled.View`
   width: 120px;
   height: 40px;
+  /* background-color:red ; */
   align-items: center;
   justify-content: center;
 `;
+export const TextHeader = styled.Text`
+  color: ${colors.background.white};
+`;
 
-export const TableBody = styled.View`
+export const TableBody = styled.TouchableOpacity`
   width: 100%;
   height: 40px;
   border: 1px solid ${colors.background.green};
@@ -64,10 +74,14 @@ export const TableBody = styled.View`
 export const Row = styled.View`
   width: 140px;
   height: 30px;
+  /* background-color:red ; */
   align-items: center;
   justify-content: center;
 `;
 
+export const TextRow = styled.Text`
+  color: ${colors.text.dark};
+`;
 export const RowSeparator = styled.View`
   height: 100%;
   width: 1px;
@@ -77,6 +91,7 @@ export const ButtonContainer = styled.View`
   height: 100px;
   width: 100%;
   margin-top: 10px;
+  /* background-color:${colors.background.grey} ; */
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;

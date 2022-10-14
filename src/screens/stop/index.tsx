@@ -6,6 +6,8 @@ import { useGetStops } from "../../hooks";
 import { useRoute } from "@react-navigation/native";
 import { StopCard } from "../../components/stop-card";
 import { Adverts } from "../../components/adverts";
+import { useSelector } from "react-redux";
+import { reducerState } from "../../redux/rootReducer";
 
 // import CustomAds from "../../components/InfoImage/BusImage";
 // import { IAds, Directions } from "../../redux/Terminal/terminal.types";
@@ -13,8 +15,11 @@ import { Adverts } from "../../components/adverts";
 
 export function Stop() {
   const { params } = useRoute();
-  const { adverts, lineId }: { adverts: IAdverts[]; lineId: Number } = params;
+  const { lineId }: { lineId: Number } = params;
   const { data, isLoading } = useGetStops(lineId);
+  const adverts = useSelector<reducerState, IAdverts[]>((state) =>
+    state.adverts.filter((e) => e.height <= 50)
+  );
 
   return (
     <Styled.Container>
@@ -48,7 +53,7 @@ export function Stop() {
         </Styled.ParadasListContainer>
       </Styled.Flex>
 
-      {/* <Adverts adverts={adverts} /> */}
+      <Adverts adverts={adverts} />
     </Styled.Container>
   );
 }

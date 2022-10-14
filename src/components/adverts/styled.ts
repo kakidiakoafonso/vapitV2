@@ -1,16 +1,19 @@
 import styled from "styled-components/native";
 import colors from "../../config/style/colors";
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  width: 320px;
+  height: 50px;
+  align-self: center;
+`;
 
 type Props = {
   width: Number;
   height: Number;
 };
 export const ImageButton = styled.TouchableOpacity`
-  /* width: 300px;
-  height: 120px; */
-  margin-left: 40px;
+  width: 320px;
+  height: 50px;
 `;
 export const Image = styled.ImageBackground<Props>`
   /* width: 350px; */
@@ -42,5 +45,5 @@ export const ErrorContainer = styled.View`
 `;
 
 export const FlatList = styled.FlatList`
-  background-color: red;
+  /* background-color: red; */
 `;
