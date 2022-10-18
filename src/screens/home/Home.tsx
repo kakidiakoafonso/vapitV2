@@ -13,6 +13,7 @@ import { Weather } from "../../components/weather";
 import { useSelector } from "react-redux";
 import { reducerState } from "../../redux/rootReducer";
 import { Skeleton } from "moti/skeleton";
+import { Admob } from "../../components/admob";
 
 // import { dispatchTerminais } from "../../redux/Terminal/terminal.dispatch";
 // import Linha from "../../components/Linha/Linha";
@@ -53,7 +54,7 @@ export function Home() {
           <Weather />
         </Styled.ScrollViewContainer>
 
-        {/* <Admob/> */}
+        {/* <Admob /> */}
 
         <News />
         <Styled.InputContainer>

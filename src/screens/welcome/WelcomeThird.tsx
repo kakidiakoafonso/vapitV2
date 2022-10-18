@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Styled from "./styled";
 import MainIcon from "../../assets/icons/WelcomeThird.svg";
 import { useNavigation } from "@react-navigation/native";
@@ -7,9 +8,15 @@ import { AntDesign } from "@expo/vector-icons";
 
 export function WelcomeThird() {
   const { navigate } = useNavigation();
-  const press = () => {
-    navigate("city");
-  };
+  async function press() {
+    try {
+      await AsyncStorage.setItem("@vapit", "true");
+    } catch (e) {
+      console.log(e);
+    } finally {
+      navigate("city");
+    }
+  }
   return (
     <Styled.Container>
       <Styled.CenterContainer>
