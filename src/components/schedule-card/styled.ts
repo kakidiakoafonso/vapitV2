@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import colors from "../../config/style/colors";
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   background-color: ${colors.background.grey80};
   width: 90%;
   flex-direction: column;

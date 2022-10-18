@@ -13,14 +13,11 @@ type Props = {
   closeModal: () => void;
 };
 export function ScheduleDetail({ modalStatus, closeModal, schedule }: Props) {
-  function handleSelected(way: String) {
-    closeModal();
-  }
   return (
     <S.Container transparent animationType="slide" visible={modalStatus}>
       <S.DarkContainer activeOpacity={1} onPress={closeModal}>
         <S.Center>
-          <S.TopContainer>
+          {/* <S.TopContainer>
             <S.IconClose onPress={closeModal} activeOpacity={0.7}>
               <AntDesign
                 name="closecircle"
@@ -28,8 +25,9 @@ export function ScheduleDetail({ modalStatus, closeModal, schedule }: Props) {
                 color={colors.background.grey}
               />
             </S.IconClose>
-          </S.TopContainer>
+          </S.TopContainer> */}
           <S.ContentContainer>
+            <S.Title>Detalhes</S.Title>
             <S.Wrapper>
               <S.IconPath>
                 <FontAwesome5
@@ -89,6 +87,72 @@ export function ScheduleDetail({ modalStatus, closeModal, schedule }: Props) {
                 </S.IconRight>
                 <S.TextValue>{schedule.day}</S.TextValue>
               </S.Group>
+            </S.Wrapper>
+            <S.Wrapper>
+              <S.IconPath>
+                <FontAwesome5
+                  name="wheelchair"
+                  size={ICON_SIZE}
+                  color={colors.background.green}
+                />
+              </S.IconPath>
+              <S.Group>
+                <S.Label>Adaptado</S.Label>
+                <S.IconRight>
+                  <AntDesign
+                    name="caretright"
+                    size={ICON_RIGHT_SIZE}
+                    color={colors.background.grey70}
+                  />
+                </S.IconRight>
+                <S.TextValue>{schedule.adapted ? "SIM" : "NAO"}</S.TextValue>
+              </S.Group>
+            </S.Wrapper>
+            <S.Wrapper>
+              <S.IconPath>
+                <MaterialIcons
+                  name="corporate-fare"
+                  size={ICON_SIZE}
+                  color={colors.background.green}
+                />
+              </S.IconPath>
+              <S.Group>
+                <S.Label>Empresa</S.Label>
+                <S.IconRight>
+                  <AntDesign
+                    name="caretright"
+                    size={ICON_RIGHT_SIZE}
+                    color={colors.background.grey70}
+                  />
+                </S.IconRight>
+                <S.TextValue>{schedule.company}</S.TextValue>
+              </S.Group>
+            </S.Wrapper>
+            <S.Wrapper>
+              <S.IconPath>
+                <MaterialIcons
+                  name="payment"
+                  size={ICON_SIZE}
+                  color={colors.background.green}
+                />
+              </S.IconPath>
+              <S.GroupColumn>
+                <S.Label>Método de pagamento</S.Label>
+                <S.TextValue>{schedule.payment_method}</S.TextValue>
+              </S.GroupColumn>
+            </S.Wrapper>
+            <S.Wrapper>
+              <S.IconPath>
+                <AntDesign
+                  name="clockcircleo"
+                  size={ICON_SIZE}
+                  color={colors.background.green}
+                />
+              </S.IconPath>
+              <S.GroupColumn>
+                <S.Label>Data da atualização</S.Label>
+                <S.TextValue>{schedule.updated_at.slice(0, 10)}</S.TextValue>
+              </S.GroupColumn>
             </S.Wrapper>
           </S.ContentContainer>
         </S.Center>

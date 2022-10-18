@@ -5,12 +5,10 @@ import colors from "../../config/style/colors";
 
 const ICON_SIZE = 20;
 const ICON_RIGHT_SIZE = 12;
-const path =
-  "https://c8.alamy.com/zooms/9/19de79a86a874d34b0c23a6e9eb7d202/2a804wp.jpg";
-type Props = { schedule: ISchedule };
-export function ScheduleCard({ schedule }: Props) {
+type Props = { schedule: ISchedule; action: (shedule: ISchedule) => void };
+export function ScheduleCard({ schedule, action }: Props) {
   return (
-    <S.Container>
+    <S.Container onPress={() => action(schedule)} activeOpacity={0.7}>
       <S.Wrapper>
         <S.IconPath>
           <FontAwesome5

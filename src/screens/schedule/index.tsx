@@ -53,6 +53,10 @@ export function Schedule() {
     setway("");
     setnewSchedules(finalSchedule);
   }
+  function handleSelectedSchedule(schedule: ISchedule) {
+    setShowScheduleDetail(true);
+    setselected(schedule);
+  }
   const animation = React.useRef<LottieView>(null);
   React.useEffect(() => filter(), [day, way]);
   return (
@@ -95,7 +99,7 @@ export function Schedule() {
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }: { item: ISchedule }) => (
-            <ScheduleCard schedule={item} />
+            <ScheduleCard schedule={item} action={handleSelectedSchedule} />
           )}
         />
       )}

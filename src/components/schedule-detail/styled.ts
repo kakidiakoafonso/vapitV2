@@ -14,10 +14,17 @@ export const Center = styled.View`
   padding: 10px;
   border-radius: 6px;
 `;
+export const Title = styled.Text`
+  color: ${colors.text.dark};
+  font-size: 18px;
+  opacity: 0.8;
+  font-weight: bold;
+  margin: 10px;
+`;
 export const ContentContainer = styled.View`
   width: 100%;
   border-radius: 6px;
-  height: 100%;
+  /* height: 100%; */
   background-color: ${colors.background.white};
   justify-content: center;
   align-items: center;
@@ -41,7 +48,8 @@ export const ScheduleContainer = styled.View`
   padding: 10px 5%;
 `;
 export const Wrapper = styled.View`
-  width: 100%;
+  width: 95%;
+  height: 40px;
   flex-direction: row;
   align-items: center;
   margin-bottom: 7px;
@@ -55,6 +63,11 @@ export const Group = styled.View`
   flex-direction: row;
   align-items: center;
   padding-left: 7%;
+`;
+export const GroupColumn = styled.View`
+  flex: 1;
+  flex-direction: column;
+  margin-left: 7%;
 `;
 export const Label = styled.Text`
   color: ${colors.text.dark};
