@@ -1,6 +1,5 @@
 import React from "react";
 import * as Styled from "./styled";
-import { Entypo } from "@expo/vector-icons";
 import { Banner } from "../../components/banner";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import LocationIcon from "../../assets/icons/location pin.svg";
@@ -13,12 +12,6 @@ import { Weather } from "../../components/weather";
 import { useSelector } from "react-redux";
 import { reducerState } from "../../redux/rootReducer";
 import { Skeleton } from "moti/skeleton";
-import { Admob } from "../../components/admob";
-
-// import { dispatchTerminais } from "../../redux/Terminal/terminal.dispatch";
-// import Linha from "../../components/Linha/Linha";
-// import Noticias from "../../components/Noticias/Noticias";
-// import Admob from "../../components/Admob/Admob";
 
 export function Home() {
   const weather = useSelector<reducerState, IWeather>(
@@ -53,8 +46,6 @@ export function Home() {
         <Styled.ScrollViewContainer>
           <Weather />
         </Styled.ScrollViewContainer>
-
-        {/* <Admob /> */}
 
         <News />
         <Styled.InputContainer>

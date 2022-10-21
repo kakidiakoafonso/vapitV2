@@ -45,9 +45,6 @@ export function LineCard({ line }: Props) {
             <Styled.NomeLinhaText size={textSize}>
               {line.name}
             </Styled.NomeLinhaText>
-            <Styled.SentidoText>
-              Sentido Anti-Horário / T. Capãp Raso
-            </Styled.SentidoText>
           </Styled.BusContainer>
         </Styled.InfoContainer>
         <Styled.IconContainer>

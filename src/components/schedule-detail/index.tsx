@@ -13,19 +13,14 @@ type Props = {
   closeModal: () => void;
 };
 export function ScheduleDetail({ modalStatus, closeModal, schedule }: Props) {
+  function formateHour(time: String): String {
+    return time.slice(0, 10);
+  }
+
   return (
     <S.Container transparent animationType="slide" visible={modalStatus}>
       <S.DarkContainer activeOpacity={1} onPress={closeModal}>
         <S.Center>
-          {/* <S.TopContainer>
-            <S.IconClose onPress={closeModal} activeOpacity={0.7}>
-              <AntDesign
-                name="closecircle"
-                size={24}
-                color={colors.background.grey}
-              />
-            </S.IconClose>
-          </S.TopContainer> */}
           <S.ContentContainer>
             <S.Title>Detalhes</S.Title>
             <S.Wrapper>
@@ -151,7 +146,8 @@ export function ScheduleDetail({ modalStatus, closeModal, schedule }: Props) {
               </S.IconPath>
               <S.GroupColumn>
                 <S.Label>Data da atualização</S.Label>
-                <S.TextValue>{schedule.updated_at.slice(0, 10)}</S.TextValue>
+                <S.TextValue>{formateHour(schedule.updated_at)}</S.TextValue>
+                {/* <S.TextValue>{schedule.updated_at.slice(0, 10)}</S.TextValue> */}
               </S.GroupColumn>
             </S.Wrapper>
           </S.ContentContainer>

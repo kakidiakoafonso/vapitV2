@@ -18,20 +18,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "config": {
-        "googleMobileAdsAppId": "ca-app-pub-3940256099942544~1458002511"
-      }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF",
-         "googleMobileAdsAppId": "ca-app-pub-9489090110653197~2846605675"
-      }
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.kakidiako.vapitV2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0abdf2a6-48a0-405f-a603-27b247b481ea"
+      }
     }
   }
 }
