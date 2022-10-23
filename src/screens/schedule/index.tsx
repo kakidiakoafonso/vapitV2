@@ -7,7 +7,6 @@ import * as Styled from "./styled";
 import { Header } from "../../components/header";
 import { ScheduleCard } from "../../components/schedule-card";
 import { DayFilterModal } from "../../components/day-filter-modal";
-import LottieView from "lottie-react-native";
 import { FullBannner } from "../../components/full-banner";
 import { FlatList } from "react-native";
 import { getLocalTime } from "../../util";
@@ -22,7 +21,7 @@ export function Schedule() {
   const finalSchedule = schedules.filter((item) => item.time > time);
   const [daymodalOpen, setdaymodalOpen] = useState<boolean>(false);
   const [waymodalOpen, setwaymodalOpen] = useState<boolean>(false);
-  // const [showScheduleDetail, setShowScheduleDetail] = useState<boolean>(false);
+  const [showScheduleDetail, setShowScheduleDetail] = useState<boolean>(false);
   const [day, setday] = useState<String>("");
   const [way, setway] = useState<String>("");
   const [newSchedules, setnewSchedules] = useState<ISchedule[]>(finalSchedule);
@@ -53,11 +52,10 @@ export function Schedule() {
     setway("");
     setnewSchedules(finalSchedule);
   }
-  // function handleSelectedSchedule(schedule: ISchedule) {
-  //   setShowScheduleDetail(true);
-  //   setselected(schedule);
-  // }
-  // const animation = React.useRef<LottieView>(null);
+  function handleSelectedSchedule(schedule: ISchedule) {
+    setShowScheduleDetail(true);
+    setselected(schedule);
+  }
   React.useEffect(() => filter(), [day, way]);
   return (
     <Styled.Container>
@@ -85,19 +83,7 @@ export function Schedule() {
         </Styled.ButtonClear>
       </Styled.FilterContainer>
 
-      <FlatList
-        data={newSchedules}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }: { item: ISchedule }) => (
-          <ScheduleCard
-            schedule={item}
-            action={() => console.warn("Clicado")}
-          />
-        )}
-      />
-
-      {/* {newSchedules.length === 0 ? (
+      {newSchedules.length === 0 ? (
         <EmptyAnimation
           message={
             day || way
@@ -114,7 +100,7 @@ export function Schedule() {
             <ScheduleCard schedule={item} action={handleSelectedSchedule} />
           )}
         />
-      )} */}
+      )}
 
       <DayFilterModal
         modalStatus={daymodalOpen}
@@ -127,13 +113,13 @@ export function Schedule() {
         callback={(selectedWay) => setway(selectedWay)}
         way={uniqueWays}
       />
-      {/*
+
       <ScheduleDetail
         modalStatus={showScheduleDetail}
         closeModal={() => setShowScheduleDetail(false)}
         schedule={selectedSchedules}
-      /> */}
-      {/* <FullBannner /> */}
+      />
+      <FullBannner />
     </Styled.Container>
   );
 }
