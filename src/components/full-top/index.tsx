@@ -2,37 +2,18 @@ import React from "react";
 import * as Linking from "expo-linking";
 import * as Styled from "./styled";
 import { FlatList, TouchableOpacity, View } from "react-native";
-// import Admob from "../Admob/Admob";
+import { useSelector } from "react-redux";
+import { reducerState } from "../../redux/rootReducer";
 
-type Props = {
-  adverts: IAdverts[];
-};
-export function Adverts({ adverts }: Props) {
+export function FullTop() {
+  const adverts = useSelector<reducerState, IAdverts[]>((state) =>
+    state.adverts.filter((e) => e.width === 300 && e.height === 250)
+  );
   const [advertsIndex, setadvertsIndex] = React.useState<number>(0);
   const refScrollView = React.useRef<FlatList>(null);
-  if (adverts.length === 0) return null; //<Admob bannerSize="banner" />
-  const advertLength = adverts.length - 1;
-  // React.useEffect(() => {
-  //   if (advertsIndex === advertLength) {
-  //     refScrollView.current?.scrollToIndex({
-  //       index: 0,
-  //       animated: true,
-  //       viewPosition: 0.5,
-  //     });
-  //     setadvertsIndex(0);
-  //   } else {
-  //     refScrollView.current?.scrollToIndex({
-  //       index: advertsIndex,
-  //       animated: true,
-  //       viewPosition: 0.5,
-  //     });
-  //   }
-  // }, [advertsIndex]);
-
-  // setInterval(() => setadvertsIndex((prev) => prev + 1), 3000);
+  if (adverts.length === 0) return null;
   const handleLinking = (linkToNavigate: string) =>
     Linking.openURL(linkToNavigate);
-  let styleSize = {};
   return (
     <View
       style={{

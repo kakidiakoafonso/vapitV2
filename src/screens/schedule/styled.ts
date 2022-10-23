@@ -79,6 +79,9 @@ export const TextVerMais = styled.Text`
   margin-right: 10px;
   font-size: 17px;
 `;
+export const AdvertsContainer = styled.View`
+  margin: 15px 0;
+`;
 export const EmptyContainer = styled.View`
   flex: 1;
   align-items: center;

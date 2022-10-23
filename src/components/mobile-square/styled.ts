@@ -3,11 +3,11 @@ import colors from "../../config/style/colors";
 
 export const ImageButton = styled.TouchableOpacity`
   width: 320px;
-  height: 250px;
+  height: 50px;
 `;
 export const Image = styled.ImageBackground`
   width: 320px;
-  height: 250px;
+  height: 50px;
   justify-content: flex-end;
 `;
 export const Content = styled.View`

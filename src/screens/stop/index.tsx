@@ -8,6 +8,7 @@ import { StopCard } from "../../components/stop-card";
 import { Adverts } from "../../components/adverts";
 import { useSelector } from "react-redux";
 import { reducerState } from "../../redux/rootReducer";
+import { FullTop } from "../../components/full-top";
 
 // import CustomAds from "../../components/InfoImage/BusImage";
 // import { IAds, Directions } from "../../redux/Terminal/terminal.types";
@@ -17,9 +18,6 @@ export function Stop() {
   const { params } = useRoute();
   const { lineId }: { lineId: Number } = params;
   const { data, isLoading } = useGetStops(lineId);
-  const adverts = useSelector<reducerState, IAdverts[]>((state) =>
-    state.adverts.filter((e) => e.height <= 50)
-  );
 
   return (
     <Styled.Container>
@@ -53,7 +51,7 @@ export function Stop() {
         </Styled.ParadasListContainer>
       </Styled.Flex>
 
-      <Adverts adverts={adverts} />
+      <FullTop />
     </Styled.Container>
   );
 }

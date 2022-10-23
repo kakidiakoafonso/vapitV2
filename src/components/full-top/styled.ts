@@ -18,12 +18,14 @@ export const Content = styled.View`
   justify-content: space-between;
 `;
 export const Title = styled.Text`
-  color: ${colors.text.dark};
+  color: ${colors.text.white};
   font-size: 18px;
+  font-weight: bold;
 `;
 export const Description = styled.Text`
-  color: ${colors.text.dark};
+  color: ${colors.text.white};
   font-size: 16px;
+  font-weight: bold;
 `;
 
 export const ErrorContainer = styled.View`

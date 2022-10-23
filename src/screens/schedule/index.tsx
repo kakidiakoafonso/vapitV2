@@ -13,6 +13,9 @@ import { getLocalTime } from "../../util";
 import { WayFilterModal } from "../../components/way-filter-modal";
 import { ScheduleDetail } from "../../components/schedule-detail";
 import { EmptyAnimation } from "../../components/empty";
+import { useSelector } from "react-redux";
+import { reducerState } from "../../redux/rootReducer";
+import { MobileSquare } from "../../components/mobile-square";
 
 export function Schedule() {
   const { params } = useRoute();
@@ -82,6 +85,9 @@ export function Schedule() {
           <Styled.FilterText>Limpar o filtro</Styled.FilterText>
         </Styled.ButtonClear>
       </Styled.FilterContainer>
+      <Styled.AdvertsContainer>
+        <MobileSquare />
+      </Styled.AdvertsContainer>
 
       {newSchedules.length === 0 ? (
         <EmptyAnimation
