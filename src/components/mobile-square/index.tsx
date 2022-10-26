@@ -10,6 +10,7 @@ export function MobileSquare() {
   const adverts = useSelector<reducerState, IAdverts[]>((state) =>
     state.adverts.filter((e) => e.width === 320 && e.height === 50)
   );
+
   const [advertsIndex, setadvertsIndex] = React.useState<number>(0);
   const refScrollView = React.useRef<FlatList>(null);
   if (adverts.length === 0) return null;

@@ -28,6 +28,7 @@ export const ContentContainer = styled.View`
   background-color: ${colors.background.white};
   justify-content: center;
   align-items: center;
+  padding-bottom: 20px;
 `;
 
 export const TopContainer = styled.View`

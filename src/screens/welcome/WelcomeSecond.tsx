@@ -20,7 +20,7 @@ export function WelcomeSecond() {
           </Styled.SVGContainer>
 
           <Styled.IntroContainer>
-            <Styled.TextIntro>Nãp se atrapalhe nos</Styled.TextIntro>
+            <Styled.TextIntro>Não se atrapalhe nos</Styled.TextIntro>
 
             <Styled.TextIntroBold>HORÁRIOS</Styled.TextIntroBold>
           </Styled.IntroContainer>

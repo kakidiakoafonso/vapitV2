@@ -1,6 +1,5 @@
 import * as Styled from "./styled";
 import React from "react";
-import { useGetWeather } from "../../hooks";
 import { Skeleton } from "moti/skeleton";
 import { useSelector } from "react-redux";
 import { reducerState } from "../../redux/rootReducer";
@@ -12,6 +11,10 @@ export function Weather() {
   const isLoading = useSelector<reducerState, boolean>(
     (state) => state.weather.loading
   );
+  const errorMessage = useSelector<reducerState, String>(
+    (state) => state.weather.error
+  );
+  if (errorMessage) return null;
   return (
     <>
       {isLoading ? (

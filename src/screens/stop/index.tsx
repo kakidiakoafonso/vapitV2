@@ -24,7 +24,7 @@ export function Stop() {
       <Header title={"Sentidos"} />
       <Styled.MessageContainer>
         <Styled.Message>
-          Seleciona a parada que deseja saber os horários
+          Selecione a parada que deseja saber os horários
         </Styled.Message>
       </Styled.MessageContainer>
 

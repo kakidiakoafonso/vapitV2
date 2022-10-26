@@ -26,7 +26,7 @@ export function City() {
         </Styled.IconContainer>
 
         <Styled.ContentContainer>
-          <Styled.Title>Vamos comecar</Styled.Title>
+          <Styled.Title>Vamos começar</Styled.Title>
           <Styled.Message>Selecione a sua cidade</Styled.Message>
           <Styled.InputContainer>
             <Styled.Input

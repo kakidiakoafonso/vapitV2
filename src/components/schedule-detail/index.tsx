@@ -136,7 +136,7 @@ export function ScheduleDetail({ modalStatus, closeModal, schedule }: Props) {
                 <S.TextValue>{schedule.payment_method}</S.TextValue>
               </S.GroupColumn>
             </S.Wrapper>
-            <S.Wrapper>
+            {/* <S.Wrapper>
               <S.IconPath>
                 <AntDesign
                   name="clockcircleo"
@@ -144,12 +144,12 @@ export function ScheduleDetail({ modalStatus, closeModal, schedule }: Props) {
                   color={colors.background.green}
                 />
               </S.IconPath>
-              {/* <S.GroupColumn>
+              <S.GroupColumn>
                 <S.Label>Data da atualização</S.Label>
                 <S.TextValue>22/22/2222</S.TextValue>
                 <S.TextValue>{formateHour(schedule.updated_at)}</S.TextValue>
-              </S.GroupColumn> */}
-            </S.Wrapper>
+              </S.GroupColumn>
+            </S.Wrapper> */}
           </S.ContentContainer>
         </S.Center>
       </S.DarkContainer>

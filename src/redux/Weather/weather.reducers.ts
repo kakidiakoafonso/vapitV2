@@ -26,6 +26,7 @@ export default function Reducers(state = inititialState, action: IAction) {
         ...state,
         loading: false,
         weather: action.payload,
+        error: "",
       };
       break;
     case GET_WEATHER_ERROR:

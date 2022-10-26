@@ -26,7 +26,7 @@ export function Search({ callback }: Props) {
             settext(e);
             callback(e);
           }}
-          placeholder="Pesquisar cidade"
+          placeholder="Pesquisar linha"
         />
         <Styled.SearchIcon activeOpacity={0.7} onPress={() => settext("")}>
           <AntDesign

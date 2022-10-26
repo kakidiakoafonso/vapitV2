@@ -50,7 +50,7 @@ export function Home() {
         <News />
         <Styled.InputContainer>
           <Styled.Input
-            placeholder="Pesquisar cidade"
+            placeholder="Pesquisar linha"
             onFocus={() => navigation.navigate("lineSearch")}
           />
           <Styled.SearchIcon>
@@ -60,7 +60,7 @@ export function Home() {
 
         <Styled.LinhasContainer>
           <Styled.UltimasLinhasText>
-            Úlimas linhas consultadas
+            Linhas disponíveis
           </Styled.UltimasLinhasText>
           {isLoading ? (
             <>

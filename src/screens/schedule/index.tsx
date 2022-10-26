@@ -94,7 +94,7 @@ export function Schedule() {
           message={
             day || way
               ? "Vazio para esse filtro"
-              : "Não existe etineraraios para essa via"
+              : "Não existe itinerários para essa via"
           }
         />
       ) : (
