@@ -72,9 +72,8 @@ export const TableBody = styled.TouchableOpacity`
   align-items: center;
 `;
 export const Row = styled.View`
-  width: 140px;
+  //width: 140px;
   height: 30px;
-  /* background-color:red ; */
   align-items: center;
   justify-content: center;
 `;

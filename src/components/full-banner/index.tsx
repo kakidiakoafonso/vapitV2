@@ -41,7 +41,7 @@ export function FullBannner() {
       dispatch(setBannerViewed());
     };
   }, []);
-  if (isAllreadyShow) return null;
+  //if (isAllreadyShow) return null;
   if (adverts.length === 0) return null;
   return (
     <S.Modal visible={showModal} transparent>
