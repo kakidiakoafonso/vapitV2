@@ -5,12 +5,15 @@ import axios from "axios";
 import { INews, Image } from "./types";
 import { Skeleton } from "moti/skeleton";
 import * as Linking from "expo-linking";
+import { Dimensions } from "react-native";
+import Carousel from "react-native-reanimated-carousel";
 
 const endPoint = "https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=10";
 
 export function News() {
   const [noticias, setnoticias] = React.useState<INews[]>([]);
   const [isloading, setloading] = React.useState<boolean>(false);
+  const width = Dimensions.get("window").width;
   async function getNoticias() {
     const { data } = await axios.get(endPoint);
     if (data) {
@@ -38,13 +41,16 @@ export function News() {
   return (
     <Styled.Container>
       <Styled.Titulo>Notícias</Styled.Titulo>
-      <Styled.FlatList
+
+      <Carousel
+        loop
+        snapEnabled
+        width={width * 0.9}
+        height={240}
+        autoPlay={true}
         data={noticias}
-        key={(item: INews) => String(item.id)}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ index, item }) => {
+        scrollAnimationDuration={1000}
+        renderItem={({ item }) => {
           var imageParsed: Image = JSON.parse(item.imagens);
 
           const imageLink = `https://agenciadenoticias.ibge.gov.br/${imageParsed.image_fulltext}`;

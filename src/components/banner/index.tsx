@@ -1,5 +1,7 @@
 import { NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 import React, { useState } from "react";
+import { Dimensions } from "react-native";
+import Carousel from "react-native-reanimated-carousel";
 import * as Styled from "./styled";
 
 type Props = {
@@ -8,23 +10,17 @@ type Props = {
 export function Banner({ data }: Props) {
   const [active, setactive] = useState<number>(0);
 
-  const handleScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const position: number = event.nativeEvent.contentOffset.x;
-    setactive(position / 350);
-    // console.log(event.nativeEvent.contentOffset.x)
-    // if((data.length*350) >position)
-    //     console.log("Maior");
-  };
-
+  const width = Dimensions.get("window").width;
   return (
     <Styled.Container>
-      <Styled.FlastList
+      <Carousel
+        loop
+        width={width * 0.9}
+        height={240}
+        autoPlay={true}
         data={data}
-        keyExtractor={(item) => String(item)}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        pagingEnabled
-        onMomentumScrollEnd={handleScrollEnd}
+        onSnapToItem={(index) => setactive(index)}
+        scrollAnimationDuration={1000}
         renderItem={({ item }) => (
           <Styled.Image
             source={{ uri: item }}
@@ -34,7 +30,6 @@ export function Banner({ data }: Props) {
         )}
       />
       <Styled.IndicatorContainer horizontal>
-        {/* <Styled.Indicator/> */}
         {data.map((item, index) => {
           return active === index ? (
             <Styled.Indicator key={index} />

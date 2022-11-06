@@ -1,8 +1,9 @@
 import React from "react";
 import * as Linking from "expo-linking";
 import * as Styled from "./styled";
-import { FlatList, TouchableOpacity, View } from "react-native";
+import { Dimensions, FlatList, View } from "react-native";
 import { useSelector } from "react-redux";
+import Carousel from "react-native-reanimated-carousel";
 import { reducerState } from "../../redux/rootReducer";
 // import Admob from "../Admob/Admob";
 
@@ -11,6 +12,7 @@ export function MobileSquare() {
     state.adverts.filter((e) => e.width === 320 && e.height === 50)
   );
 
+  const width = Dimensions.get("window").width;
   const [advertsIndex, setadvertsIndex] = React.useState<number>(0);
   const refScrollView = React.useRef<FlatList>(null);
   if (adverts.length === 0) return null;
@@ -24,16 +26,34 @@ export function MobileSquare() {
         alignSelf: "center",
       }}
     >
-      <FlatList
+      {
+        adverts.length === 1 ?
+        <Styled.ImageButton
+        onPress={() => handleLinking(String(adverts[0].link))}
+        activeOpacity={1}
+      >
+        <Styled.Image
+          source={{ uri: adverts[0].url }}
+          resizeMethod="resize"
+          resizeMode="stretch"
+        >
+          {/* <Styled.Content>
+            <Styled.Title>{item.title}</Styled.Title>
+            <Styled.Description>{item.description}</Styled.Description>
+          </Styled.Content> */}
+        </Styled.Image>
+      </Styled.ImageButton>
+      :
+        
+        <Carousel
+        loop
+        width={width}
+        height={width / 2}
+        autoPlay={true}
         data={adverts}
-        showsHorizontalScrollIndicator={false}
-        ref={refScrollView}
-        initialScrollIndex={0}
-        onScrollToIndexFailed={() => setadvertsIndex(0)}
-        keyExtractor={(item: any) => String(item.id)}
-        horizontal
-        pagingEnabled
-        renderItem={({ index, item }: { index: number; item: IAdverts }) => (
+        scrollAnimationDuration={1000}
+        // onSnapToItem={(index) => console.log("current index:", index)}
+        renderItem={({ item }) => (
           <Styled.ImageButton
             onPress={() => handleLinking(String(item.link))}
             activeOpacity={1}
@@ -50,7 +70,7 @@ export function MobileSquare() {
             </Styled.Image>
           </Styled.ImageButton>
         )}
-      />
+      />}
     </View>
   );
 }

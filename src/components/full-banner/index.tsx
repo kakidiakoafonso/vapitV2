@@ -20,7 +20,7 @@ export function FullBannner() {
   const closeModal = () => setshowModal(false);
 
   function handleClick() {
-    Linking.openURL(String(adverts[0].url));
+    Linking.openURL(String(adverts[0].link));
   }
   React.useEffect(() => {
     const bannerTimeout = setTimeout(() => {
