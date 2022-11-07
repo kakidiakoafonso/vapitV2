@@ -26,7 +26,8 @@ export function ScheduleCard({ schedule, action }: Props) {
               color={colors.background.grey70}
             />
           </S.IconRight>
-          <S.TextValue>{schedule.way}</S.TextValue>
+          <S.TextValue>{schedule.way}
+          </S.TextValue>
         </S.Group>
       </S.Wrapper>
       <S.Wrapper>

@@ -79,4 +79,5 @@ export const TextValue = styled.Text`
   color: ${colors.text.dark};
   font-size: 11px;
   opacity: 0.6;
+  flex: 1;
 `;
