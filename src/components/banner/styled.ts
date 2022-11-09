@@ -27,16 +27,12 @@ export const IndicatorContainer = styled.ScrollView`
   flex-direction: row;
 `;
 export const Indicator = styled.View`
-  width: 40px;
+  width: 12px;
   height: 11px;
   border-radius: 10px;
   background-color: #32969b;
   margin: 0px 2px;
 `;
-export const IndicatorOff = styled.View`
-  width: 12px;
-  height: 11px;
-  border-radius: 10px;
+export const IndicatorOff = styled(Indicator)`
   background-color: #fff;
-  margin: 0px 2px;
 `;

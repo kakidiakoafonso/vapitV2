@@ -6,8 +6,9 @@ import BusIcon from "../../assets/icons/location bus.svg";
 
 type Props = {
   stop: IStop;
+  lineID: Number
 };
-export function StopCard({ stop }: Props) {
+export function StopCard({ stop ,lineID}: Props) {
   const navigation = useNavigation();
   let textFontSize = 15;
   const currentFont = 20; //stop.terminal.length

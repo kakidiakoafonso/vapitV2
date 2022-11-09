@@ -51,7 +51,8 @@ export function MobileSquare() {
         height={width / 2}
         autoPlay={true}
         data={adverts}
-        scrollAnimationDuration={1000}
+        scrollAnimationDuration={1500}
+        autoPlayInterval={3000}
         // onSnapToItem={(index) => console.log("current index:", index)}
         renderItem={({ item }) => (
           <Styled.ImageButton

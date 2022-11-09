@@ -20,7 +20,8 @@ export function Banner({ data }: Props) {
         autoPlay={true}
         data={data}
         onSnapToItem={(index) => setactive(index)}
-        scrollAnimationDuration={1000}
+        scrollAnimationDuration={1500}
+        autoPlayInterval={3000}
         renderItem={({ item }) => (
           <Styled.Image
             source={{ uri: item }}

@@ -50,6 +50,7 @@ export function News() {
         autoPlay={true}
         data={noticias}
         scrollAnimationDuration={1000}
+        autoPlayInterval={3000}
         renderItem={({ item }) => {
           var imageParsed: Image = JSON.parse(item.imagens);
 

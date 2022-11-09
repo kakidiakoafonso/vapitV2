@@ -16,7 +16,7 @@ export function FullBannner() {
   );
   const [showCloseIcon, setshowCloseIcon] = React.useState<boolean>(false);
   const [showModal, setshowModal] = React.useState<boolean>(true);
-  const [counter, setCounter] = React.useState<number>(10);
+  const [counter, setCounter] = React.useState<number>(5);
   const closeModal = () => setshowModal(false);
 
   function handleClick() {

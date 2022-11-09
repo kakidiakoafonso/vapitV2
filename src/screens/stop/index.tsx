@@ -44,7 +44,7 @@ export function Stop() {
               data={data}
               keyExtractor={(item: IStop) => String(item.id)}
               renderItem={({ item }: { item: IStop }) => (
-                <StopCard stop={item} />
+                <StopCard stop={item} lineID={lineId} />
               )}
             />
           )}
