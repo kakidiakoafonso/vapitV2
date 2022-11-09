@@ -61,6 +61,10 @@ export const FilterContainer = styled.View`
   margin-bottom: 20px;
   justify-content: space-between;
 `;
+export const FilterButtonsContainer = styled.View`
+  flex-direction: column;
+  gap: 10px;
+`;
 export const FilterButtons = styled.View`
   flex-direction: row;
   gap: 10px;

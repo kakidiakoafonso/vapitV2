@@ -1,1 +1,1 @@
-export const BANNERVIEWED = "BANNERVIEWED";
+export const ADD = "ADD";

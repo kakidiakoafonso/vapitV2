@@ -13,13 +13,11 @@ import { getLocalTime } from "../../util";
 import { WayFilterModal } from "../../components/way-filter-modal";
 import { ScheduleDetail } from "../../components/schedule-detail";
 import { EmptyAnimation } from "../../components/empty";
-import { useSelector } from "react-redux";
-import { reducerState } from "../../redux/rootReducer";
 import { MobileSquare } from "../../components/mobile-square";
 
 export function Schedule() {
   const { params } = useRoute();
-  const { schedules }: { schedules: ISchedule[] } = params;
+  const { schedules , lineId }: { schedules: ISchedule[], lineId:Number } = params;
   const time = getLocalTime();
   const finalSchedule = schedules.filter((item) => item.time > time);
   const [daymodalOpen, setdaymodalOpen] = useState<boolean>(false);
@@ -64,6 +62,8 @@ export function Schedule() {
     <Styled.Container>
       <Header title={"Horários"} />
       <Styled.FilterContainer>
+        <Styled.FilterButtonsContainer>
+
         <Styled.FilterButtons>
           <Styled.Button onPress={() => setdaymodalOpen(true)}>
             <AntDesign
@@ -76,13 +76,15 @@ export function Schedule() {
             <FontAwesome name="bus" size={24} color={colors.background.green} />
           </Styled.Button>
         </Styled.FilterButtons>
+        <Styled.FilterText>Filtros</Styled.FilterText>
+        </Styled.FilterButtonsContainer>
         <Styled.ButtonClear onPress={cleanFilter}>
           <MaterialIcons
             name="cleaning-services"
             size={24}
             color={colors.background.green}
           />
-          <Styled.FilterText>Limpar o filtro</Styled.FilterText>
+          <Styled.FilterText>Limpar filtros</Styled.FilterText>
         </Styled.ButtonClear>
       </Styled.FilterContainer>
       <Styled.AdvertsContainer>
@@ -125,7 +127,7 @@ export function Schedule() {
         closeModal={() => setShowScheduleDetail(false)}
         schedule={selectedSchedules}
       />
-      <FullBannner />
+      <FullBannner lineId={lineId} />
     </Styled.Container>
   );
 }

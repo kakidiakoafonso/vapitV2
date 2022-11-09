@@ -5,14 +5,7 @@ import * as Styled from "./styled";
 import { useGetStops } from "../../hooks";
 import { useRoute } from "@react-navigation/native";
 import { StopCard } from "../../components/stop-card";
-import { Adverts } from "../../components/adverts";
-import { useSelector } from "react-redux";
-import { reducerState } from "../../redux/rootReducer";
 import { FullTop } from "../../components/full-top";
-
-// import CustomAds from "../../components/InfoImage/BusImage";
-// import { IAds, Directions } from "../../redux/Terminal/terminal.types";
-// import { Parada } from "../../components/Parada/Parada";
 
 export function Stop() {
   const { params } = useRoute();

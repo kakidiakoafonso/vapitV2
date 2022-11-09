@@ -47,8 +47,8 @@ export function MobileSquare() {
         
         <Carousel
         loop
-        width={width}
-        height={width / 2}
+        width={320}
+        height={50}
         autoPlay={true}
         data={adverts}
         scrollAnimationDuration={1500}

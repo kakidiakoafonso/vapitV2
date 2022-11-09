@@ -5,7 +5,7 @@ import colors from "../../config/style/colors";
 const { width } = Dimensions.get("screen");
 const screenWidht = width * 0.9;
 export const Wrapper = styled.TouchableOpacity`
-  width: ${screenWidht + "px"};
+  width: 320px;
   height: 200px;
   align-self: center;
   margin-right: 10px;

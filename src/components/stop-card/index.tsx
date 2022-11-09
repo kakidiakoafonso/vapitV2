@@ -19,6 +19,7 @@ export function StopCard({ stop ,lineID}: Props) {
   function handleLinhaClick() {
     navigation.navigate("schedule", {
       schedules: stop.schedules,
+      lineId:lineID
     });
   }
   return (

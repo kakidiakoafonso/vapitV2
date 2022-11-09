@@ -8,13 +8,21 @@ export const ShadowContainer = styled.View`
 `;
 
 export const BannerContainer = styled.TouchableOpacity`
-  width: 85%;
-  height: 70%;
+  width: 300px;
+  height: 400px;
   background-color: #fff;
   border-radius: 4px;
   align-items: center;
   justify-content: center;
 `;
+
+export const TopContainer = styled.TouchableOpacity`
+  width: 85%;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+`;
+
 
 export const CloseIcon = styled.TouchableOpacity`
   position: absolute;
@@ -23,7 +31,7 @@ export const CloseIcon = styled.TouchableOpacity`
   background-color: #ddd;
   border-radius: 15px;
   right: -20px;
-  top: -30px;
+  top: -35px;
   justify-content: center;
   align-items: center;
 `;

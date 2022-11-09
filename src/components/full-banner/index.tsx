@@ -6,18 +6,24 @@ import { setBannerViewed } from "../../redux/config/action";
 import { reducerState } from "../../redux/rootReducer";
 import * as S from "./styled";
 
-export function FullBannner() {
+type Props = {
+  lineId: Number;
+};
+export function FullBannner({ lineId }: Props) {
   const dispatch = useDispatch();
-  const isAllreadyShow = useSelector<reducerState, boolean>(
-    (state) => state.config.bannerAlreadyViewed
+  const isAllreadyShow = useSelector<reducerState, Boolean>((state) =>
+    state.config.bannerAlreadyViewed.includes(lineId)
   );
   const adverts = useSelector<reducerState, IAdverts[]>((state) =>
     state.adverts.filter((e) => e.height > 50)
   );
   const [showCloseIcon, setshowCloseIcon] = React.useState<boolean>(false);
   const [showModal, setshowModal] = React.useState<boolean>(true);
-  const [counter, setCounter] = React.useState<number>(5);
-  const closeModal = () => setshowModal(false);
+  const [counter, setCounter] = React.useState<number>(1);
+  const closeModal = () => {
+    dispatch(setBannerViewed(lineId));
+    setshowModal(false);
+  };
 
   function handleClick() {
     Linking.openURL(String(adverts[0].link));
@@ -36,23 +42,25 @@ export function FullBannner() {
     };
   }, [counter]);
 
-  React.useEffect(() => {
-    return () => {
-      dispatch(setBannerViewed());
-    };
-  }, []);
-  //if (isAllreadyShow) return null;
+  // React.useEffect(() => {
+  //   return () => {
+  //     dispatch(setBannerViewed(lineId));
+  //   };
+  // }, []);
+  if (isAllreadyShow) return null;
   if (adverts.length === 0) return null;
   return (
     <S.Modal visible={showModal} transparent>
       <S.ShadowContainer>
-        {!showCloseIcon && (
-          <S.CounterMessageContainer>
-            <S.TextCounters>
-              Poderá fechar o anúncio em {counter} segundos!
-            </S.TextCounters>
-          </S.CounterMessageContainer>
-        )}
+        <S.TopContainer>
+          {!showCloseIcon && (
+            <S.CounterMessageContainer>
+              <S.TextCounters>
+                Poderá fechar o anúncio em {counter} segundos!
+              </S.TextCounters>
+            </S.CounterMessageContainer>
+          )}
+        </S.TopContainer>
         <S.BannerContainer onPress={handleClick} activeOpacity={0.8}>
           {showCloseIcon && (
             <S.CloseIcon activeOpacity={0.7} onPress={closeModal}>

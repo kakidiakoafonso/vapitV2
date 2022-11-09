@@ -1,7 +1,7 @@
 import * as T from "./constant";
-export function setBannerViewed() {
+export function setBannerViewed(lineId:Number) {
   return {
-    type: T.BANNERVIEWED,
-    payload: true,
+    type: "ADD",
+    payload: Number,
   };
 }

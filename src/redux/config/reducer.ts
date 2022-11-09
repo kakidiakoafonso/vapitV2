@@ -1,16 +1,15 @@
 import { ConfigReducerState, Action } from "./types";
-
 const initialState: ConfigReducerState = {
-  bannerAlreadyViewed: false,
+  bannerAlreadyViewed: [1, 2, 3],
 };
 
-function Reducer(state: ConfigReducerState = initialState, action: Action) {
+function Reducer(
+  state: ConfigReducerState = initialState,
+  action: Action
+): ConfigReducerState {
   switch (action.type) {
-    case "BANNERVIEWED":
-      return {
-        ...state,
-        bannerAlreadyViewed: true,
-      };
+    case "ADD":
+      return { bannerAlreadyViewed: [] };
       break;
     default:
       return state;

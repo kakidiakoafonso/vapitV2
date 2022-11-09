@@ -1,10 +1,10 @@
 import { Ways } from "../Terminal/terminal.types";
-import * as A from "./constant";
+import {ADD} from "./constant";
 
 export type ConfigReducerState = {
-  bannerAlreadyViewed: boolean;
+  bannerAlreadyViewed: Array<Number>;
 };
 export type Action = {
-  type: typeof A.BANNERVIEWED;
-  payload: { ways: Ways; direction: string };
+  type: typeof ADD;
+  payload: Number;
 };
