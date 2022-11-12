@@ -14,10 +14,6 @@ type Props = {
 };
 export function LineCard({ line }: Props) {
   const dispacth = useDispatch();
-  let textSize = 14;
-  if (line.name.length > 19) textSize = 14;
-  if (line.name.length > 29) textSize = 12;
-  if (line.name.length > 25) textSize = 12;
   const navigation = useNavigation();
   const [showModal, setshowModal] = useState<boolean>(false);
   //   const { bus_stops } = linha;
@@ -42,7 +38,7 @@ export function LineCard({ line }: Props) {
         <Styled.InfoContainer>
           <Styled.NumberText>{line.code}</Styled.NumberText>
           <Styled.BusContainer>
-            <Styled.NomeLinhaText size={textSize}>
+            <Styled.NomeLinhaText>
               {line.name}
             </Styled.NomeLinhaText>
           </Styled.BusContainer>

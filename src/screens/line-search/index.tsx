@@ -8,9 +8,9 @@ import { useRoute } from "@react-navigation/native";
 
 export function SearchLine() {
   const { params } = useRoute();
-  console.log(params);
+  const { cityId }: { cityId: Number } = params;
 
-  const { data: lines, isLoading } = useGetLines(21);
+  const { data: lines, isLoading ,isFetching} = useGetLines(cityId);
   const [linhasAtuais, setlinhasAtuais] = useState<ILine[]>(lines || []);
   const handleSearch = (text: string) => {
     if (text) {
@@ -30,7 +30,7 @@ export function SearchLine() {
           <Styled.Label>Linhas de Ônibus </Styled.Label>
         </Styled.LabelContainer>
         <Styled.ListContainer>
-          {isLoading ? (
+          {isLoading || isFetching ? (
             <>
               <Loading />
               <Loading />

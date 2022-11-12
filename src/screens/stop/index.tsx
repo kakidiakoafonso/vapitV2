@@ -10,7 +10,7 @@ import { FullTop } from "../../components/full-top";
 export function Stop() {
   const { params } = useRoute();
   const { lineId }: { lineId: Number } = params;
-  const { data, isLoading } = useGetStops(lineId);
+  const { data, isLoading,isFetching } = useGetStops(lineId);
 
   return (
     <Styled.Container>
@@ -23,7 +23,7 @@ export function Stop() {
 
       <Styled.Flex>
         <Styled.ParadasListContainer>
-          {isLoading ? (
+          {isLoading || isFetching ? (
             <>
               <Loading />
               <Loading />
