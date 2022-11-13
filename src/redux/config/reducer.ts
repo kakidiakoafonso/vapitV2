@@ -1,6 +1,6 @@
 import { ConfigReducerState, Action } from "./types";
 const initialState: ConfigReducerState = {
-  bannerAlreadyViewed: [1, 2, 3],
+  bannerAlreadyViewed: [],
 };
 
 function Reducer(
