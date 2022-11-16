@@ -24,6 +24,15 @@ export function Home() {
   const { params } = useRoute();
   const { url, cityId }: { url: Array<string>; cityId: Number } = params;
   const { data: lines, isLoading , isFetching} = useGetLines(cityId);
+
+  function handeOnFocus(){
+    if(!isLoading && lines){
+      if(lines.length>0)
+        navigation.navigate("lineSearch",{
+          data:lines
+        })
+    }
+  }
   return (
     <Styled.Container>
       <Styled.Header>
@@ -51,7 +60,8 @@ export function Home() {
         <Styled.InputContainer>
           <Styled.Input
             placeholder="Pesquisar linha"
-            onFocus={() => navigation.navigate("lineSearch",{cityId})}
+            onFocus={handeOnFocus}
+            editable={lines?.length>0}
           />
           <Styled.SearchIcon>
             <SearchIcon width={25} height={25} />

@@ -1,20 +1,18 @@
 import * as Styled from "./styled";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Search } from "../../components/search";
-import { useGetLines } from "../../hooks";
-import { Loading } from "../../components/loader";
 import { LineCard } from "../../components/line-card";
 import { useRoute } from "@react-navigation/native";
+import { FlatList } from "react-native";
 
 export function SearchLine() {
   const { params } = useRoute();
-  const { cityId }: { cityId: Number } = params;
+  const { data: lines }: { lines: ILine[] } = params;
 
-  const { data: lines, isLoading ,isFetching} = useGetLines(cityId);
   const [linhasAtuais, setlinhasAtuais] = useState<ILine[]>(lines || []);
   const handleSearch = (text: string) => {
     if (text) {
-      const linhasFiltrada = linhasAtuais.filter((linha) => {
+      const linhasFiltrada = lines.filter((linha) => {
         return linha.name.toLowerCase().search(text.toLowerCase()) > -1;
       });
       setlinhasAtuais(linhasFiltrada);
@@ -30,19 +28,9 @@ export function SearchLine() {
           <Styled.Label>Linhas de Ônibus </Styled.Label>
         </Styled.LabelContainer>
         <Styled.ListContainer>
-          {isLoading || isFetching ? (
-            <>
-              <Loading />
-              <Loading />
-              <Loading />
-              <Loading />
-              <Loading />
-            </>
-          ) : (
-            linhasAtuais.map((item) => (
-              <LineCard key={String(item.id)} line={item} />
-            ))
-          )}
+          {linhasAtuais.map((item, index) => (
+            <LineCard key={String(index)} line={item} />
+          ))}
         </Styled.ListContainer>
       </Styled.BottomContainer>
     </Styled.Container>

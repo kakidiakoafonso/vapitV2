@@ -1,6 +1,18 @@
 import styled from "styled-components/native";
 import colors from "../../config/style/colors";
 
+export const LabelContainer = styled.View`
+  width: 95%;
+  margin-bottom: 15px;
+`;
+export const Label = styled.Text`
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 7px;
+  margin-bottom: 12px;
+  color: ${colors.text.dark90};
+`;
+
 export const Container = styled.SafeAreaView`
   flex: 1;
   background-color: ${colors.background.white};
@@ -15,7 +27,6 @@ export const BottomContainer = styled.View`
   align-items: center;
 `;
 export const TextCidadeListTitleContainer = styled.View`
-  /* background-color:${colors.background.grey}; */
   width: 90%;
   height: 60px;
   justify-content: center;
@@ -26,18 +37,7 @@ export const TextCidadeListTitle = styled.Text`
 `;
 
 export const ListContainer = styled.ScrollView`
-  width: 95%;
+  width: 93%;
   height: 100%;
 `;
 export const FlatList = styled.FlatList``;
-export const LabelContainer = styled.View`
-  width: 95%;
-  margin-bottom: 15px;
-`;
-export const Label = styled.Text`
-  font-size: 22px;
-  font-weight: bold;
-  margin-top: 7px;
-  margin-bottom: 12px;
-  color: ${colors.text.dark90};
-`;

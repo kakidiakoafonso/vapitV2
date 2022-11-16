@@ -4,6 +4,7 @@ import colors from "../../config/style/colors";
 export const Container = styled.SafeAreaView`
   flex: 1;
   background-color: ${colors.background.white};
+  padding-top: 40px;
 `;
 
 export const BottomContainer = styled.View`

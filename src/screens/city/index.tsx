@@ -16,14 +16,22 @@ export function City() {
   React.useEffect(() => {
     dispatch(dispatchWeather());
   }, []);
+  function handeOnFocus(){
+    if(!isLoading && data){
+      if(data.length>0)
+        navigation.navigate("citySearch",{
+          data
+        })
+    }
+  }
   return (
     <Styled.Container>
       <Styled.TopContainer>
-        <Styled.IconContainer>
+        {/* <Styled.IconContainer>
           <Styled.IconBack onPress={() => navigation.goBack()}>
             <AntDesign name="arrowleft" size={40} color="#fff" />
           </Styled.IconBack>
-        </Styled.IconContainer>
+        </Styled.IconContainer> */}
 
         <Styled.ContentContainer>
           <Styled.Title>Vamos começar</Styled.Title>
@@ -31,7 +39,8 @@ export function City() {
           <Styled.InputContainer>
             <Styled.Input
               placeholder="Pesquisar cidade"
-              onFocus={() => navigation.navigate("citySearch")}
+              onFocus={handeOnFocus}
+              editable={data?.length>0}
             />
             <Styled.SearchIcon>
               <SearchIcon width={25} height={25} />
