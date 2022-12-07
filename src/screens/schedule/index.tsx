@@ -19,7 +19,8 @@ export function Schedule() {
   const { params } = useRoute();
   const { schedules , lineId }: { schedules: ISchedule[], lineId:Number } = params;
   const time = getLocalTime();
-  const finalSchedule = schedules.filter((item) => item.time > time);
+  const finalSchedule = schedules;
+  // const finalSchedule = schedules.filter((item) => item.time > time);
   const [daymodalOpen, setdaymodalOpen] = useState<boolean>(false);
   const [waymodalOpen, setwaymodalOpen] = useState<boolean>(false);
   const [showScheduleDetail, setShowScheduleDetail] = useState<boolean>(false);

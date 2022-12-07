@@ -5,8 +5,6 @@ const apiKey = "053859db322b90449538eab037ea3b1d";
 export async function getWeather(): Promise<IWeather> {
   let { status } = await Location.requestForegroundPermissionsAsync();
   if (status !== "granted") {
-    console.log("Permission to access location was denied");
-    // return;
   }
   let location = await Location.getCurrentPositionAsync({});
   const lat = location.coords.latitude;

@@ -21,10 +21,9 @@ export function LineCard({ line }: Props) {
   let height = 70
   if(line.name.length > 30)
     height = 100
-  
   return (
     <Styled.Container
-      style={{ borderLeftWidth: 8,height}}
+      style={{ borderLeftWidth: 8}}
       activeOpacity={0.5}
       onPress={handleLinhaClick}
       color={line.color_of_bus}

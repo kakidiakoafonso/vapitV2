@@ -3,13 +3,14 @@ import colors from "../../config/style/colors";
 
 export const Container = styled.TouchableOpacity`
   width: 100%;
-  height: 70px;
+  /* height: 70px; AQUI */
   margin-bottom: 12px;
 `;
 export const Flex = styled.View`
   flex: 1;
   background-color: ${colors.background.grey80};
-  padding-left: 3%;
+  /* padding-left: 3%; AQUI */
+  padding: 14px 10px;
   align-items: center;
   flex-direction: row;
   border-radius: 4px;
@@ -37,7 +38,7 @@ export const NumberText = styled.Text`
   margin-right: 10px;
 `;
 export const BusContainer = styled.View`
-  height: 40px;
+  /* height: 40px;  AQUI */
   justify-content: space-between;
   /* align-items:flex-start ; */
 `;

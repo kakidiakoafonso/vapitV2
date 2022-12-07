@@ -12,6 +12,7 @@ import { Weather } from "../../components/weather";
 import { useSelector } from "react-redux";
 import { reducerState } from "../../redux/rootReducer";
 import { Skeleton } from "moti/skeleton";
+import { EmptyAnimation } from "../../components/empty";
 
 export function Home() {
   const weather = useSelector<reducerState, IWeather>(
@@ -23,14 +24,14 @@ export function Home() {
   const navigation = useNavigation();
   const { params } = useRoute();
   const { url, cityId }: { url: Array<string>; cityId: Number } = params;
-  const { data: lines, isLoading , isFetching} = useGetLines(cityId);
+  const { data: lines, isLoading, isFetching } = useGetLines(cityId);
 
-  function handeOnFocus(){
-    if(!isLoading && lines){
-      if(lines.length>0)
-        navigation.navigate("lineSearch",{
-          data:lines
-        })
+  function handeOnFocus() {
+    if (!isLoading && lines) {
+      if (lines.length > 0)
+        navigation.navigate("lineSearch", {
+          data: lines,
+        });
     }
   }
   return (
@@ -61,7 +62,7 @@ export function Home() {
           <Styled.Input
             placeholder="Pesquisar linha"
             onFocus={handeOnFocus}
-            editable={lines?.length>0}
+            editable={lines?.length > 0}
           />
           <Styled.SearchIcon>
             <SearchIcon width={25} height={25} />
@@ -70,7 +71,7 @@ export function Home() {
 
         <Styled.LinhasContainer>
           <Styled.UltimasLinhasText>
-            Linhas disponíveis
+            {lines?.length===0? "Linhas indisponíveis":"Linhas disponíveis"}
           </Styled.UltimasLinhasText>
           {isLoading || isFetching ? (
             <>
@@ -81,6 +82,8 @@ export function Home() {
               <Loading />
               <Loading />
             </>
+          ) : lines?.length === 0 ? (
+            <EmptyAnimation message={"Não existe linhas disponiveis"} />
           ) : (
             lines?.map((item) => <LineCard key={String(item.id)} line={item} />)
           )}

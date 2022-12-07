@@ -22,6 +22,7 @@ export function StopCard({ stop ,lineID}: Props) {
       lineId:lineID
     });
   }
+
   return (
     <Styled.Container activeOpacity={0.5} onPress={handleLinhaClick}>
       <Styled.Flex>

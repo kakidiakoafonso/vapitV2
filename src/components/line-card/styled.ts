@@ -6,7 +6,6 @@ type Props = {
 };
 export const Container = styled.TouchableOpacity<Props>`
   width: 100%;
-  padding: 20px 0;
   background-color: ${colors.background.grey80};
   border: 0px solid ${({ color }) => color};
   border-top-left-radius: 5px;
@@ -14,6 +13,7 @@ export const Container = styled.TouchableOpacity<Props>`
   margin-bottom: 12px;
 `;
 export const Flex = styled.View`
+  padding: 14px 0;
   flex: 1;
   padding-left: 3%;
   align-items: center;

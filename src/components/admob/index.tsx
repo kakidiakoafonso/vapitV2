@@ -21,7 +21,6 @@ export function Admob() {
   };
 
   AdMobRewarded.addEventListener("rewardedVideoUserDidEarnReward", (reward) => {
-    console.log(reward);
     loadAd();
   });
 

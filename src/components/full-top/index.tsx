@@ -10,6 +10,7 @@ export function FullTop() {
   const adverts = useSelector<reducerState, IAdverts[]>((state) =>
     state.adverts.filter((e) => e.width === 300 && e.height === 250)
   );
+ 
   const width = Dimensions.get("window").width;
   if (adverts.length === 0) return null;
   const handleLinking = (linkToNavigate: string) =>
