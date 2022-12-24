@@ -1,13 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
-import Logo from "../../assets/icons/Welcome.svg";
+import * as Linking from 'expo-linking';
+import Logo from "../../assets/icons/logo.svg";
 import * as S from "./styled";
 import * as SW from "../welcome/styled";
 
-const LOGO_SIZE = 200;
+const LOGO_SIZE = 100;
 export function Privacy() {
   const { navigate } = useNavigation();
   const handleContinue = () => navigate("welcome");
+  function seePrivacy() {
+    Linking.openURL('https://app.politicadeprivacidade.agenciavapit.com.br/');
+  }
   return (
     <SW.Container>
       <S.Hero>
@@ -23,11 +27,11 @@ export function Privacy() {
           Ao clicar em "Começar" você concorda com os
         </S.PolicyText>
         <S.DescritionTextWrapper>
-          <S.LinkButton>
+          <S.LinkButton activeOpacity={0.7} onPress={seePrivacy}>
             <S.LinkButtonText>Termos de Serviço</S.LinkButtonText>
           </S.LinkButton>
           <S.PolicyText>e a</S.PolicyText>
-          <S.LinkButton>
+          <S.LinkButton activeOpacity={0.7} onPress={seePrivacy}>
             <S.LinkButtonText>Política de Privacidade.</S.LinkButtonText>
           </S.LinkButton>
         </S.DescritionTextWrapper>

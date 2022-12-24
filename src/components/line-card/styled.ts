@@ -7,6 +7,7 @@ type Props = {
 export const Container = styled.TouchableOpacity<Props>`
   width: 100%;
   background-color: ${colors.background.grey80};
+  padding-right: 10px;
   border: 0px solid ${({ color }) => color};
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -46,5 +47,5 @@ export const SentidoText = styled.Text`
 `;
 export const IconContainer = styled.View`
   position: absolute;
-  right: 5px;
+  right: 2px;
 `;
