@@ -7,7 +7,7 @@ import { store } from "./src/redux";
 import { Route } from "./src/route";
 import { Admob } from "./src/components/admob";
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 const queryClient = new QueryClient();
 export default function App() {
   return (

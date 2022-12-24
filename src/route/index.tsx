@@ -7,12 +7,14 @@ import { Home } from "../screens/home/Home";
 import { Welcome } from "../screens/welcome/Welcome";
 import { WelcomeSecond } from "../screens/welcome/WelcomeSecond";
 import { WelcomeThird } from "../screens/welcome/WelcomeThird";
-import { City } from "../screens/city";
+import { City} from "../screens/city";
 import { SearchCitie } from "../screens/city-search";
 import { SearchLine } from "../screens/line-search";
 import { Stop } from "../screens/stop/index";
 import { Schedule } from "../screens/schedule";
-import { View } from "react-native";
+import { Text, View } from "react-native";
+import { Privacy } from "../screens/privacy";
+import { Splash } from "../screens/splash";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,22 +39,24 @@ export function Route() {
     prepare();
   }, []);
 
-  const onLayoutRootView = React.useCallback(async () => {
-    if (appIsReady) {
-      await SplashScreen.hideAsync();
-    }
-  }, [appIsReady]);
+  // const onLayoutRootView = React.useCallback(async () => {
+  //   if (appIsReady) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [appIsReady]);
 
   if (!appIsReady) {
-    return null;
+    return <Splash/>
   }
   return (
-    <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+    // <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName={firstTime ? "welcome" : "city"}
+          initialRouteName={firstTime ? "privacy" : "city"}
         >
+          <Stack.Screen name="privacy" component={Privacy} />
           <Stack.Screen name="welcome" component={Welcome} />
           <Stack.Screen name="welcome2" component={WelcomeSecond} />
           <Stack.Screen name="welcome3" component={WelcomeThird} />

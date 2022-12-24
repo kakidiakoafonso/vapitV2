@@ -20,7 +20,7 @@
     "expo": "~46.0.9",
     "expo-ads-admob": "^13.0.0",
     "expo-linear-gradient": "^11.4.0",
-    "expo-linking": "~3.2.2",
+    "expo-linking": "~3.2.4",
     "expo-location": "~14.3.0",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
