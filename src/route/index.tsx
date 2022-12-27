@@ -54,7 +54,7 @@ export function Route() {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName={firstTime ? "privacy" : "city"}
+          // initialRouteName={firstTime ? "privacy" : "city"}
         >
           <Stack.Screen name="privacy" component={Privacy} />
           <Stack.Screen name="welcome" component={Welcome} />

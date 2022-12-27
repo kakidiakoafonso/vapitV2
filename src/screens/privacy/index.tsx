@@ -1,11 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import * as Linking from 'expo-linking';
-import Logo from "../../assets/icons/logo.svg";
 import * as S from "./styled";
 import * as SW from "../welcome/styled";
 
-const LOGO_SIZE = 100;
 export function Privacy() {
   const { navigate } = useNavigation();
   const handleContinue = () => navigate("welcome");
@@ -15,8 +13,8 @@ export function Privacy() {
   return (
     <SW.Container>
       <S.Hero>
-        <Logo width={LOGO_SIZE} height={LOGO_SIZE} />
-        <S.Name>Vapit</S.Name>
+        <S.Logo source={require('../../assets/img/logo-vapit-hora-do-onibus.png')} resizeMethod='resize' resizeMode="contain"
+        />
         <S.Slogan>Seu aplicativo de transporte publico</S.Slogan>
       </S.Hero>
 

@@ -12,7 +12,10 @@ align-items: center;
 justify-content: center;
 width: 90%;
 `;
-export const Logo = styled.View``;
+export const Logo = styled.Image`
+width: 200px;
+height: 200px;
+`;
 export const Name = styled.Text`
 color: ${colors.background.green};
 font-weight: bold;
@@ -23,7 +26,6 @@ color: ${colors.background.grey};
 font-weight: bold;
 font-size: 18px;
 text-align: center;
-margin: 4px 0;
 `;
 
 

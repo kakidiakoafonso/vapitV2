@@ -1,9 +1,11 @@
 import * as S from "./styled";
-import Logo from '../../assets/icons/splash.svg'
+import { Dimensions, Image } from "react-native";
+const {width,height} = Dimensions.get('screen')
+
 export function Splash() {
   return (
     <S.Container>
-      <Logo width={"100%"} height={"100%"}/>
+      <Image source={require('../../assets/img/splash.png')} style={{width,height}}/>
     </S.Container>
   );
 }
