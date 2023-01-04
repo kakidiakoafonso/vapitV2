@@ -6,6 +6,7 @@ type ICitie = {
   created_at: String;
   updated_at: String;
   url: String[];
+  weather: IWeather
 };
 
 type ILine = {

@@ -10,9 +10,9 @@ type Props = {
 };
 export default function CityCard({ city }: Props) {
   const { navigate } = useNavigation();
-  const { url } = city;
+  const { url,weather } = city;
   function handleNavigate() {
-    navigate("home", { url, cityId: city.id });
+    navigate("home", { url, cityId: city.id, weather });
   }
   if (!city.status) return null;
   return (

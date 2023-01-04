@@ -15,6 +15,7 @@ import { Skeleton } from "moti/skeleton";
 import { EmptyAnimation } from "../../components/empty";
 
 export function Home() {
+ 
   const weather = useSelector<reducerState, IWeather>(
     (state) => state.weather.weather
   );
@@ -24,7 +25,10 @@ export function Home() {
   const navigation = useNavigation();
   const { params } = useRoute();
   const { url, cityId }: { url: Array<string>; cityId: Number } = params;
-  const { data: lines, isLoading, isFetching } = useGetLines(cityId);
+  const { data: linesFetched, isLoading, isFetching } = useGetLines(cityId);
+  const isEmpty = linesFetched != undefined && linesFetched?.length===0
+  const lines: ILine[] = linesFetched != undefined ? linesFetched.sort(function(a, b){return Number(a.code) - Number(b.code)}) :[]
+
 
   function handeOnFocus() {
     if (!isLoading && lines) {
@@ -37,9 +41,6 @@ export function Home() {
   return (
     <Styled.Container>
       <Styled.Header>
-        {/* <Styled.Menu>
-          <Entypo name="menu" size={44} color="black" />
-        </Styled.Menu> */}
         <Styled.LefContainer>
           <LocationIcon width={25} height={25} />
           {isWeatherLoading ? (
@@ -71,7 +72,7 @@ export function Home() {
 
         <Styled.LinhasContainer>
           <Styled.UltimasLinhasText>
-            {lines?.length===0? "Linhas indisponíveis":"Linhas disponíveis"}
+            {isEmpty ? "Linhas indisponíveis":"Linhas disponíveis"}
           </Styled.UltimasLinhasText>
           {isLoading || isFetching ? (
             <>
@@ -85,7 +86,7 @@ export function Home() {
           ) : lines?.length === 0 ? (
             <EmptyAnimation message={"Não existe linhas disponiveis"} />
           ) : (
-            lines?.map((item) => <LineCard key={String(item.id)} line={item} />)
+            lines.map((item) => <LineCard key={String(item.id)} line={item} />)
           )}
         </Styled.LinhasContainer>
       </Styled.Body>
